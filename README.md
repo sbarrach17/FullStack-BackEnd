@@ -1,5 +1,5 @@
-# 
-cd server
+#
+cd ` nombre de carpeta`
 
 ## 
 npm install
