@@ -6,7 +6,7 @@ const app = express();
 
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(userRoutes);
 
@@ -15,6 +15,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('Error en servidor!');
 });
 
-app.listen(3000, () => console.log("SERVIDOR ENCENDIDO"));
+app.listen(3000, () => console.log("SERVIDOR ENCENDIDO"));2
 
 module.exports = app;
