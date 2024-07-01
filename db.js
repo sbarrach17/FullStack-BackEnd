@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 require('dotenv').config(); // Carga las variables de entorno desde .env
 
 const pool = new Pool({
-    connectionString: proccss.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
