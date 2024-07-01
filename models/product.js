@@ -23,10 +23,10 @@ const getProductById = async (productId) => {
 };
 
 const insertCollection = async (producto) => {
-    const { nombre, descripcion, valor, url, email,nombre_vendedor, apellido_vendedor } = producto;
-    const values = [nombre, descripcion, valor, url, email,nombre_vendedor, apellido_vendedor];
+    const { marca, descripcion, valor,  url,  email,nombre_vendedor, apellido_vendedor,talla,  modelo } = producto;
+    const values = [marca, descripcion, valor,  url, email,nombre_vendedor, apellido_vendedor , talla, modelo];
     const consulta =
-        "INSERT INTO productos (nombre, descripcion, valor,url, email,nombre_vendedor, apellido_vendedor) VALUES ($1, $2, $3,$4, $5,$6,$7)";
+        "INSERT INTO productos (marca, descripcion, valor, url, email,nombre_vendedor, apellido_vendedor,talla, modelo) VALUES ($1, $2, $3,$4, $5,$6,$7,$8,$9)";
     await pool.query(consulta, values);
 };
 
@@ -36,12 +36,12 @@ const editProduct = async (productId, newProductData) => {
         throw { code: 404, message: "Producto no encontrado" };
     }
     const updatedProduct = { ...existingProduct, ...newProductData };
-    const { nombre, descripcion, valor, url } = updatedProduct;
-    const values = [nombre, descripcion, valor, url, productId];
+    const { marca, modelo, talla, valor,url,  descripcion } = updatedProduct;
+    const values = [marca, modelo, talla, valor,url,  descripcion, productId];
     const query = `
         UPDATE productos
-        SET nombre = $1, descripcion = $2, valor = $3, url = $4
-        WHERE id = $5
+        SET marca = $1, modelo = $2, talla = $3, valor = $4, url = $5, descripcion = $6
+        WHERE id = $7
     `;
     await pool.query(query, values);
     return {

@@ -1,0 +1,274 @@
+{
+    "nombre": "API REST PROYECTO",
+    "version": "1.0.0",
+    "descripcion": "API para gestionar usuarios, productos y favoritos",
+    "endpoints": [
+        {
+            "ruta": "/login",
+            "metodo": "POST",
+            "descripcion": "Inicio de sesión",
+            "parametros": [
+                {
+                    "nombre": "email",
+                    "tipo": "string",
+                    "descripcion": "La dirección de correo electrónico del usuario"
+                },
+                {
+                    "nombre": "password",
+                    "tipo": "string",
+                    "descripcion": "La contraseña del usuario"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Inicio de sesión exitoso",
+                "token": "eyJhbGciOiJIUzI"
+            }
+        },
+        {
+            "ruta": "/usuarios",
+            "metodo": "GET",
+            "descripcion": "Obtener una lista de todos los usuarios",
+            "parametros": [],
+            "ejemplo_respuesta": {
+                "usuarios": [
+                    {
+                        "id": 1,
+                        "nombre": "Sebastian",
+                        "apellido": "Barra",
+                        "email": "sebastian.barra@dominio.com"
+                    },
+                    {
+                        "id": 2,
+                        "nombre": "Jaja",
+                        "apellido": "Ss",
+                        "email": "jaja.ss@dominio.com"
+                    }
+                ]
+            }
+        },
+        {
+            "ruta": "/usuarios/{id}",
+            "metodo": "GET",
+            "descripcion": "Obtener detalles de un usuario por su ID",
+            "parametros": [
+                {
+                    "nombre": "id",
+                    "tipo": "integer",
+                    "descripcion": "El ID único del usuario"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "id": 1,
+                "nombre": "Sebastian",
+                "apellido": "Barra",
+                "email": "sebastian.barra@dominio.com"
+            }
+        },
+        {
+            "ruta": "/usuarios",
+            "metodo": "POST",
+            "descripcion": "Crear un nuevo usuario",
+            "parametros": [
+                {
+                    "nombre": "nombre",
+                    "tipo": "string",
+                    "descripcion": "El nombre del usuario"
+                },
+                {
+                    "nombre": "apellido",
+                    "tipo": "string",
+                    "descripcion": "El apellido del usuario"
+                },
+                {
+                    "nombre": "email",
+                    "tipo": "string",
+                    "descripcion": "La dirección de correo electrónico del usuario"
+                },
+                {
+                    "nombre": "password",
+                    "tipo": "string",
+                    "descripcion": "La contraseña del usuario"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Usuario creado exitosamente"
+            }
+        },
+        {
+            "ruta": "/usuarios/{id}",
+            "metodo": "PUT",
+            "descripcion": "Actualizar nombre, apellido o contraseña de un usuario",
+            "parametros": [
+                {
+                    "nombre": "id",
+                    "tipo": "integer",
+                    "descripcion": "El ID único del usuario"
+                },
+                {
+                    "nombre": "nombre",
+                    "tipo": "string",
+                    "descripcion": "El nuevo nombre del usuario",
+                    "requerido": false
+                },
+                {
+                    "nombre": "apellido",
+                    "tipo": "string",
+                    "descripcion": "El nuevo apellido del usuario",
+                    "requerido": false
+                },
+                {
+                    "nombre": "password",
+                    "tipo": "string",
+                    "descripcion": "La nueva contraseña del usuario",
+                    "requerido": false
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Usuario actualizado exitosamente"
+            }
+        },
+        {
+            "ruta": "/productos",
+            "metodo": "GET",
+            "descripcion": "Obtener una lista de todos los productos",
+            "parametros": [],
+            "ejemplo_respuesta": {
+                "productos": [
+                    {
+                        "id": 1,
+                        "nombre": "Producto1",
+                        "descripcion": "Descripción del Producto1",
+                        "valor": 100000,
+                        "url": "http://dominio.com/producto1"
+                    },
+                    {
+                        "id": 2,
+                        "nombre": "Producto2",
+                        "descripcion": "Descripción del Producto2",
+                        "valor": 2000000,
+                        "url": "http://dominio.com/producto2"
+                    }
+                ]
+            }
+        },
+        {
+            "ruta": "/productos/{id}",
+            "metodo": "GET",
+            "descripcion": "Obtener detalles de un producto por su ID",
+            "parametros": [
+                {
+                    "nombre": "id",
+                    "tipo": "integer",
+                    "descripcion": "El ID único del producto"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "id": 1,
+                "nombre": "Producto1",
+                "descripcion": "Descripción del Producto1",
+                "valor": 102222,
+                "url": "http://dominio.com/producto1"
+            }
+        },
+        {
+            "ruta": "/productos",
+            "metodo": "POST",
+            "descripcion": "Crear un nuevo producto",
+            "parametros": [
+                {
+                    "nombre": "nombre",
+                    "tipo": "string",
+                    "descripcion": "El nombre del producto"
+                },
+                {
+                    "nombre": "descripcion",
+                    "tipo": "string",
+                    "descripcion": "La descripción del producto"
+                },
+                {
+                    "nombre": "valor",
+                    "tipo": "integer",
+                    "descripcion": "El valor del producto"
+                },
+                {
+                    "nombre": "url",
+                    "tipo": "string",
+                    "descripcion": "La URL del producto"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Producto creado exitosamente"
+            }
+        },
+        {
+            "ruta": "/productos/{id}",
+            "metodo": "DELETE",
+            "descripcion": "Eliminar un producto por su ID",
+            "parametros": [
+                {
+                    "nombre": "id",
+                    "tipo": "integer",
+                    "descripcion": "El ID único del producto a eliminar"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Producto eliminado exitosamente"
+            }
+        },
+        {
+            "ruta": "/favoritos",
+            "metodo": "GET",
+            "descripcion": "Obtener una lista de todos los productos favoritos",
+            "parametros": [],
+            "ejemplo_respuesta": {
+                "favoritos": [
+                    {
+                        "id": 1,
+                        "usuario_id": 1,
+                        "producto_id": 1
+                    },
+                    {
+                        "id": 2,
+                        "usuario_id": 2,
+                        "producto_id": 1
+                    }
+                ]
+            }
+        },
+        {
+            "ruta": "/favoritos",
+            "metodo": "POST",
+            "descripcion": "Agregar un producto a favoritos",
+            "parametros": [
+                {
+                    "nombre": "usuario_id",
+                    "tipo": "integer",
+                    "descripcion": "El ID del usuario"
+                },
+                {
+                    "nombre": "producto_id",
+                    "tipo": "integer",
+                    "descripcion": "El ID del producto"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Producto agregado a favoritos exitosamente"
+            }
+        },
+        {
+            "ruta": "/favoritos",
+            "metodo": "DELETE",
+            "descripcion": "Eliminar un producto de favoritos por su ID",
+            "parametros": [
+                {
+                    "nombre": "id",
+                    "tipo": "integer",
+                    "descripcion": "El ID único del producto a eliminar"
+                }
+            ],
+            "ejemplo_respuesta": {
+                "mensaje": "Producto eliminado exitosamente"
+            }
+        }
+    ]
+}

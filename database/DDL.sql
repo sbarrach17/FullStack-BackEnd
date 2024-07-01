@@ -17,6 +17,10 @@ CREATE TABLE productos (
     valor INT NOT NULL,
     url VARCHAR(255) NOT NULL,
     email_vendedor VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    modelo VARCHAR(255) NOT NULL,
+    talla VARCHAR(255) NOT NULL
 );
 
 
@@ -42,5 +46,6 @@ CREATE TABLE carro (
     departamento VARCHAR(100),
     metodoPago VARCHAR(100) NOT NULL,
     producto_id INT NOT NULL,
+    
     FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE CASCADE
 );

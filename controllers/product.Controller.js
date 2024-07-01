@@ -31,8 +31,8 @@ const registerUserCollection = async (req, res) => {
 
 const editProductController = async (req, res) => {
   const productId = req.params.id;
-  const { nombre, descripcion, valor, url } = req.body;
-  const updatedProductData = { nombre, descripcion, valor, url };
+  const { marca, modelo, talla, valor, url, descripcion} = req.body;
+  const updatedProductData = { marca, modelo, talla, valor, url, descripcion};
   try {
       const updatedProduct = await editProduct(productId, updatedProductData);
       res.status(200).json(updatedProduct);
