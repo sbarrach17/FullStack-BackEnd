@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-require('dotenv').config(); // Carga las variables de entorno desde .env
+require('dotenv').config();
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -8,12 +8,13 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT || 5432,
-  });
+});
+
 pool.connect((error) => {
     if (error) {
-        throw new error (error);
+        throw new Error(error.message); // Throw a new Error object with the error message
     } else {
-        console.log ('DB conectada');
+        console.log('DB conectada');
     }
 });
 
