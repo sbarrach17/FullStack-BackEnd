@@ -11,11 +11,32 @@ const addFavoriteEmail = async (usuarioEmail, productoId) => {
 };
 
 const getFavoritesWithProducts = async () => {
-    const { rows: favoritosConProductos } = await pool.query(
-        "SELECT * FROM favoritos_productos"
-    );
-    return favoritosConProductos;
+    const query = `
+        SELECT
+            f.id AS favorito_id,
+            u.id AS usuario_id,
+            u.email AS usuario_email,
+            p.id AS producto_id,
+            p.marca AS producto_marca,
+            p.descripcion AS producto_descripcion,
+            p.valor AS producto_valor,
+            p.url AS producto_url,
+            p.modelo AS producto_modelo,
+            p.email AS vendedor_email
+        FROM favoritos f
+        JOIN usuarios u ON f.usuario_email = u.email
+        JOIN productos p ON f.producto_id = p.id;
+    `;
+
+    try {
+        const { rows: favoritosConProductos } = await pool.query(query);
+        return favoritosConProductos;
+    } catch (err) {
+        console.error('Error executing query', err);
+        throw err;
+    }
 };
+
 const deleteFavoriteById = async (favoriteId) => {
     const values = [favoriteId];
     const query = `
