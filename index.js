@@ -4,10 +4,7 @@ const userRoutes = require("./routes/user.Routes.js");
 
 const app = express();
 
-// Configurar opciones para el middleware cors
-const corsOptions = {
-  origin: "https://fullstack-frontend-yybf.onrender.com",
-};
+
 
 app.use(cors(corsOptions));
 app.use(express.json());
